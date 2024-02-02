@@ -17,13 +17,22 @@ class Tester {
   }
 
   _addReview(nuReview) {
-    nuReview.addReview()
+    nuReview.addReview();
   }
 
   submitReview(reviewedVehicle, reviewedStarRating, reviewedText) {
-    let nuReview = this._makeNuReview(reviewedVehicle, this, reviewedStarRating, reviewedText);
+    let nuReview = this._makeNuReview(
+      reviewedVehicle,
+      this,
+      reviewedStarRating,
+      reviewedText
+    );
 
-    nuReview.addReview();
+    if (reviewedVehicle.validate()) {
+      nuReview.addReview();
+    } else {
+      throw new Error("Cannot submit review for invalid vehicle.");
+    }
 
     return nuReview;
   }
