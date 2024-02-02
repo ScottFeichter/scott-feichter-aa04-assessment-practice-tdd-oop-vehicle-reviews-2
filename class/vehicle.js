@@ -80,6 +80,10 @@ class Vehicle {
       return false;
     }
   }
+
+  getDetails() {
+    return `The ${this.year} ${this.modelName} costs $${this.price} and has ${this.reviews.length} reviews.`;
+  }
 }
 
 module.exports = Vehicle;
