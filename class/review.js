@@ -9,6 +9,12 @@ class Review {
     this.vehicle.reviews.push(this);
     this.tester.reviews.push(this);
   }
+
+  static filterByStars(starRatingToFilter, ...reviewsToFilter) {
+    return reviewsToFilter.filter(
+      (curVal) => curVal.starRating === starRatingToFilter
+    );
+  }
 }
 
 module.exports = Review;
