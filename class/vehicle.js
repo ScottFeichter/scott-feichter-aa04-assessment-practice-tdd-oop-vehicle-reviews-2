@@ -84,6 +84,21 @@ class Vehicle {
   getDetails() {
     return `The ${this.year} ${this.modelName} costs $${this.price} and has ${this.reviews.length} reviews.`;
   }
+
+  findReviewByTester(testerName) {
+    for (let review of this.reviews) {
+      for (let key in review) {
+        for (let k in review[key]) {
+          if (review[key][k] === testerName) {
+            console.log("review[key][k]:   ", review[key][k]);
+            return review;
+          }
+        }
+      }
+    }
+  }
+
+  // END OF CLASS
 }
 
 module.exports = Vehicle;
