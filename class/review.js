@@ -5,6 +5,10 @@ class Review {
     this.starRating = starRating;
     this.text = text;
   }
+  addReview() {
+    this.vehicle.reviews.push(this);
+    this.tester.reviews.push(this);
+  }
 }
 
 module.exports = Review;
