@@ -1,4 +1,4 @@
-const Vehicle = require(`./vehicle`);
+// const Vehicle = require(`./vehicle`);
 // const Tester = require(`./tester`);
 
 class Review {

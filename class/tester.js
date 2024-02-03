@@ -1,5 +1,5 @@
 const Vehicle = require(`./vehicle`);
-// const Bicycle = require(`./bicycle`);
+const Bicycle = require(`./bicycle`);
 const ElectricBicycle = require("./electric-bicycle");
 const Review = require(`./review`);
 const validBicycle = require(`./main`);
@@ -21,7 +21,7 @@ class Tester {
   }
 
   _isVehicleEBicycle(vehicle) {
-    console.log("_isVehicleEBicyle: Running");
+    console.log("_isVehicleEBicyle: Running", vehicle);
     if (vehicle instanceof ElectricBicycle) {
       return true;
     }
@@ -29,8 +29,8 @@ class Tester {
   }
 
   _isVehicleBicycle(vehicle) {
-    console.log("_isVehicleBicyle: Running");
-    if (vehicle instanceof Bicyle) {
+    console.log("_isVehicleBicyle: Running", vehicle);
+    if (vehicle instanceof Bicycle) {
       return true;
     }
     return false;
@@ -64,13 +64,13 @@ class Tester {
     if (this._isVehicleEBicycle(reviewedVehicle)) {
       console.log("Yes EBike");
       nuReview.addReview();
-      this.tester["bikeTester"] = true;
-      this.tester.eBiketester = true;
+      this.bikeTester = true;
+      this.eBikeTester = true;
       return nuReview;
     } else if (this._isVehicleBicycle(reviewedVehicle)) {
       console.log("Yes Bike");
       nuReview.addReview();
-      this.tester["bikeTester"] = true;
+      this.bikeTester = true;
       return nuReview;
     }
 
@@ -80,15 +80,15 @@ class Tester {
 
 let tester = new Tester("Bob Jones");
 
-console.log(
-  tester.submitReview(validBicycle, 5, "Great for touring and gravel")
-);
-console.log(tester.bikeTester); // true
-console.log(tester.eBikeTester); // undefined or false
+// console.log(
+//   tester.submitReview(validBicycle, 5, "Great for touring and gravel")
+// );
+// console.log(tester.bikeTester); // true
+// console.log(tester.eBikeTester); // undefined or false
 
-// let validEBike = new ElectricBicycle("Specialized", 2010, 600, "Touring", 18, 26, 30, 45);
-// tester.submitReview(validEBike, 1, "Terrible range");
-// console.log(tester.bikeTester) // true
-// console.log(tester.eBikeTester) // true
+let validEBike = new ElectricBicycle("Specialized", 2010, 600, "Touring", 18, 26, 30, 45);
+tester.submitReview(validEBike, 1, "Terrible range");
+console.log(tester.bikeTester) // true
+console.log(tester.eBikeTester) // true
 
 module.exports = Tester;
